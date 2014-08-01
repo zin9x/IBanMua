@@ -9,6 +9,10 @@ public class ItemHome {
     private String title;
     private String testGit;
 
+    public ItemHome(){
+
+    }
+
     public ItemHome(String id, String url, String title){
         this.id = id;
         this.url = url;
