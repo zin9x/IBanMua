@@ -32,9 +32,9 @@ public class ActivityTabHost extends TabActivity {
         @Override
         public void onTabChanged(String s) {
             for (int i = 0, n = tabHost.getTabWidget().getChildCount(); i < n; i++) {
-                tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#c4ebdc"));
+//                tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#c4ebdc"));
                 TextView textView = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(R.id.tabsText);
-                textView.setTextColor(Color.BLACK);
+                textView.setTextColor(Color.parseColor("#d3d3d3"));
                 icon = (ImageView) tabHost.getTabWidget().getChildTabViewAt(i).findViewById(R.id.tabsImg);
                 if (i == HOME) {
                     //normal
@@ -49,9 +49,9 @@ public class ActivityTabHost extends TabActivity {
                     icon.setImageResource(R.drawable.ic_launcher);
                 }
             }
-            tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#5f4434"));
+//            tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#5f4434"));
             TextView textView = (TextView) tabHost.getCurrentTabView().findViewById(R.id.tabsText);
-            textView.setTextColor(Color.WHITE);
+            textView.setTextColor(Color.parseColor("#0e7fff"));
             icon = (ImageView) tabHost.getCurrentTabView().findViewById(R.id.tabsImg);
             //select
             if (tabHost.getCurrentTab() == HOME) {
@@ -94,15 +94,15 @@ public class ActivityTabHost extends TabActivity {
             }
         });
 
-        for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
-            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#c4ebdc"));
-        }
+//        for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
+//            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#c4ebdc"));
+//        }
 
         tabHost.setCurrentTab(HOME);
-        tabHost.getTabWidget().getChildAt(HOME).setBackgroundColor(Color.parseColor("#5f4434"));
+//        tabHost.getTabWidget().getChildAt(HOME).setBackgroundColor(Color.parseColor("#5f4434"));
 
         title = (TextView) tabHost.getCurrentTabView().findViewById(R.id.tabsText);
-        title.setTextColor(Color.WHITE);
+        title.setTextColor(Color.parseColor("#0e7fff"));
         icon = (ImageView) tabHost.getCurrentTabView().findViewById(R.id.tabsImg);
         icon.setImageResource(R.drawable.ic_launcher);
         tabHost.setOnTabChangedListener(onOpenTabListener);
