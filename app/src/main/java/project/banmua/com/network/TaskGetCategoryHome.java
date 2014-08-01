@@ -17,9 +17,9 @@ import project.banmua.com.item.ItemHome;
  * Created by Zin9x on 8/1/2014.
  */
 public class TaskGetCategoryHome extends TaskBase<ArrayList<ItemHome>> {
-    private String parentID;
+    private int parentID;
 
-    public TaskGetCategoryHome(Context context, String parentID) {
+    public TaskGetCategoryHome(Context context, int parentID) {
         super(context);
         this.parentID = parentID;
     }
@@ -48,7 +48,7 @@ public class TaskGetCategoryHome extends TaskBase<ArrayList<ItemHome>> {
     @Override
     protected void genParams(HashMap<String, String> params) {
         super.genParams(params);
-        params.put(WebServiceConfig.PARAM_PARENT_ID, parentID);
+        params.put(WebServiceConfig.PARAM_PARENT_ID, String.valueOf(parentID));
     }
 
     @Override
