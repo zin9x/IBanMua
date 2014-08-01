@@ -1,38 +1,40 @@
 package project.banmua.com;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentActivity;
 
 
-public class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
-        Log.v("Zin", "Zinzin");
+        setContentView(layoutId());
+        initViews(savedInstanceState);
+        initVariables(savedInstanceState);
     }
+    protected abstract int layoutId();
 
+    protected abstract void initViews(Bundle savedInstanceState);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.base, menu);
-        return true;
-    }
+    protected abstract void initVariables(Bundle savedInstanceState);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    protected final void initHeader() {
+//        btnLeft = (MyImageView) findViewById(R.id.btnLeft);
+//        lblTitleBar = (TextView) findViewById(R.id.lblTitleBar);
+//        btnLeft.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+//    }
+//
+//    protected void setHeaderTitle(int stringId) {
+//        lblTitleBar.setText(stringId);
+//    }
+//
+//    protected void setHeaderTitle(String string) {
+//        lblTitleBar.setText(string);
+//    }
 }
