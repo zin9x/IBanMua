@@ -39,11 +39,13 @@ public class ActivityTabHost extends TabActivity {
                 if (i == HOME) {
                     //normal
                     icon.setImageResource(R.drawable.ic_launcher);
+                } else if (i == POST) {
+                    icon.setImageResource(R.drawable.ic_launcher);
                 } else if (i == SEARCH) {
                     icon.setImageResource(R.drawable.ic_launcher);
                 } else if (i == NOTIFICATION) {
                     icon.setImageResource(R.drawable.ic_launcher);
-                } else {
+                } else if (i == SETTINGS){
                     icon.setImageResource(R.drawable.ic_launcher);
                 }
             }
@@ -54,19 +56,19 @@ public class ActivityTabHost extends TabActivity {
             //select
             if (tabHost.getCurrentTab() == HOME) {
                 icon.setImageResource(R.drawable.ic_launcher);
+            } else if (tabHost.getCurrentTab() == POST) {
+                icon.setImageResource(R.drawable.ic_launcher);
             } else if (tabHost.getCurrentTab() == SEARCH) {
                 icon.setImageResource(R.drawable.ic_launcher);
             } else if (tabHost.getCurrentTab() == NOTIFICATION) {
                 icon.setImageResource(R.drawable.ic_launcher);
-            } else {
+            } else if (tabHost.getCurrentTab() == SETTINGS){
                 icon.setImageResource(R.drawable.ic_launcher);
             }
         }
     };
     private TextView title;
     private ImageView icon;
-    private SharedPreferences sharedPreferences;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,11 +97,9 @@ public class ActivityTabHost extends TabActivity {
         for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
             tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#c4ebdc"));
         }
-            tabHost.setCurrentTab(SETTINGS);
-            tabHost.getTabWidget().getChildAt(SETTINGS).setBackgroundColor(Color.parseColor("#5f4434"));
-            tabHost.setCurrentTab(HOME);
-            tabHost.getTabWidget().getChildAt(HOME).setBackgroundColor(Color.parseColor("#5f4434"));
 
+        tabHost.setCurrentTab(HOME);
+        tabHost.getTabWidget().getChildAt(HOME).setBackgroundColor(Color.parseColor("#5f4434"));
 
         title = (TextView) tabHost.getCurrentTabView().findViewById(R.id.tabsText);
         title.setTextColor(Color.WHITE);
