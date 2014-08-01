@@ -7,6 +7,7 @@ public class ItemHome {
     private String id;
     private String url;
     private String title;
+    private String testGit;
 
     public ItemHome(String id, String url, String title){
         this.id = id;
