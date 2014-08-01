@@ -1,4 +1,4 @@
-package project.banmua.com;
+package project.banmua.com.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
