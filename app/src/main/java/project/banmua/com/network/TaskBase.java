@@ -28,7 +28,7 @@ import project.banmua.com.network.exceptions.ResException;
  * Created by Thangbk on 1/8/14.
  */
 public abstract class TaskBase<T extends Object> {
-    private static final int SOCKET_TIMEOUT_MS = 5000;
+    private static final int SOCKET_TIMEOUT_MS = 50000;
     private HashMap<String, String> mParams;
     private boolean debugging = false;
     protected JSONObject mGson;
@@ -84,7 +84,7 @@ public abstract class TaskBase<T extends Object> {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    resException = new ResException(e.getMessage(), ExceptionConstant.ERROR_CODE_PARSE_JSON);
+                    resException = new ResException(e.getMessage());
                     VolleyError error = new VolleyError(resException);
                     return Response.error(error);
                 }
@@ -132,11 +132,11 @@ public abstract class TaskBase<T extends Object> {
             int code = jsonObject.getInt("code");
             if (code != 0) {
                 String message = getMessage(json);
-                resException = new ResException(message, code);
+                resException = new ResException(message);
             }
         } catch (JSONException e) {
             e.printStackTrace();
-            resException = new ResException(e.getMessage(), ExceptionConstant.ERROR_CODE_PARSE_JSON);
+            resException = new ResException(e.getMessage());
         }
         return resException;
     }

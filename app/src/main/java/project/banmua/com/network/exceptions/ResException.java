@@ -6,9 +6,8 @@ public class ResException extends Throwable{
     private String messageError;
     private int errorCode;
 
-    public ResException(String messageError,int errorCode){
+    public ResException(String messageError){
         this.messageError = messageError;
-        this.errorCode = errorCode;
     }
 
     @Override
