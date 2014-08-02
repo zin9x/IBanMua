@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,7 +42,6 @@ public abstract class TaskBase<T extends Object> {
 
     public final void request(final Response.Listener<T> listener, final ExceptionListener errorListener) {
         String url = genURLRequest();
-//            String encodedURL = URLEncoder.encode(url, "UTF-8");
 
         Log.e("REQUEST", url);
         mRequest = new Request<T>(getMethod(), url, new Response.ErrorListener() {
@@ -128,12 +128,12 @@ public abstract class TaskBase<T extends Object> {
     private ResException validData(String json) {
         ResException resException = null;
         try {
-            JSONObject jsonObject = new JSONObject(json);
-            int code = jsonObject.getInt("code");
-            if (code != 0) {
-                String message = getMessage(json);
-                resException = new ResException(message);
-            }
+            JSONArray jsonObject = new JSONArray(json);
+//            int code = jsonObject.getInt("code");
+//            if (code != 0) {
+//                String message = getMessage(json);
+//                resException = new ResException(message);
+//            }
         } catch (JSONException e) {
             e.printStackTrace();
             resException = new ResException(e.getMessage());
@@ -176,17 +176,6 @@ public abstract class TaskBase<T extends Object> {
     protected abstract String getBaseURL();
 
     protected void genParams(HashMap<String, String> params) {
-//        params.put("os", "" + 2);
-//        try {
-//            byte[] data = PPPApplication.CONFIG.USER_AGENT.getBytes("UTF-8");
-//            String base64 = Base64.encodeToString(data, Base64.DEFAULT);
-//            Log.e("TAG", "BASE 64 =" + base64);
-//            params.put("agent", URLEncoder.encode(base64, "UTF-8"));
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//            params.put("agent", "Android");
-//        }
-//        params.put("udid", PPPApplication.CONFIG.DEVICE_UUID);
     }
 
 }
